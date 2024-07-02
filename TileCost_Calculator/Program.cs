@@ -17,11 +17,18 @@ namespace TileCost_Calculator
 
                 Console.WriteLine("1: Rectangle \n2: Circle \n3: Polygon \n4: Triangle \n\n\n");
                 char choice = Console.ReadKey().KeyChar;
+                
+                //clearing console for better readability
                 Console.Clear();
+
+                
                 Console.WriteLine("\nEnter the cost per one unit of flooring");
                 float costPerUnit = Convert.ToInt32(Console.ReadLine());
-                float ratePerHour = Convert.ToInt32(Console.ReadLine());
-                int estiatedWorkingHours = Convert.ToInt32(Console.ReadLine());
+                
+
+                Console.WriteLine("\nEnter estimatedWorking Time");
+                int estimatedWorkingHours = Convert.ToInt32(Console.ReadLine());
+
                 if (choice == '1')
                 {
                     // A = w * l
@@ -80,7 +87,10 @@ namespace TileCost_Calculator
                     return; //restart the loop
                 }
 
-                Console.WriteLine($"\nThe total cost for flooring an {shape} shaped area of {area} is {totalCostFlooring}");
+                float totalPerHour = totalCostFlooring / estimatedWorkingHours;
+
+                Console.WriteLine($"\nThe total cost for flooring an {shape} shaped area of {area} is {totalCostFlooring} \nfor an estimation of {totalPerHour} total per hour");
+                Console.WriteLine("Press any key to continue...");
                 Console.ReadKey(); //wait for user interaction to continue
                 Console.Clear();
             }

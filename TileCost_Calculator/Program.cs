@@ -6,8 +6,10 @@ namespace TileCost_Calculator
     {
         static void Main(string[] args)
         {
+            
             float totalCostFlooring = 0;
             float area = 0;
+            const float PI = 3.14F;
             string shape = "";
 
             Console.WriteLine("Hello, welcome to tile cost calculator: \nlet's start !");
@@ -46,12 +48,9 @@ namespace TileCost_Calculator
                 else if (choice == '2')
                 {
                     //A = pi * R2
-                 
                     double radius = Convert.ToInt32(Console.ReadLine());
                     area = (float)(3.14 * Math.Pow(radius, 2.0)); //casting double to float
 
-
-                    totalCostFlooring = area * costPerUnit;
                     shape = "Circle";
                 }
                 else if (choice == '3')
@@ -64,7 +63,6 @@ namespace TileCost_Calculator
 
 
                     area = 1 / 2 * perimeter * apothem;
-                    totalCostFlooring = area * costPerUnit;
                     shape = "Polygon";
                 }
                 else if (choice == '4')
@@ -77,7 +75,7 @@ namespace TileCost_Calculator
 
 
                     area = heightOfATriangle * baseOfATriangle / 2;
-                    totalCostFlooring = area * costPerUnit;
+ 
                     shape = "Triangle";
                 }
                 else
@@ -87,6 +85,7 @@ namespace TileCost_Calculator
                     return; //restart the loop
                 }
 
+                totalCostFlooring = area * costPerUnit;
                 float totalPerHour = totalCostFlooring / estimatedWorkingHours;
 
                 Console.WriteLine($"\nThe total cost for flooring an {shape} shaped area of {area} is {totalCostFlooring} \nfor an estimation of {totalPerHour} total per hour");

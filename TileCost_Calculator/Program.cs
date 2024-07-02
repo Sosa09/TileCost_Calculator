@@ -7,17 +7,27 @@ namespace TileCost_Calculator
         static void Main(string[] args)
         {
             
-            float totalCostFlooring = 0;
-            float area = 0;
+            float totalCostFlooring;
+            float area ;
             const float PI = 3.14F;
-            string shape = "";
+            string selectedShape;
+
+            const string RECTANGLE = "Rectangle";
+            const string CIRCLE = "Circle";
+            const string POLYGON = "Polygon";
+            const string TRIANGLE = "Triangle"; 
+            
+            const char RECTANGLEID = '1';
+            const char CIRCLEID = '2';
+            const char POLYGONID = '3';
+            const char TRIANGLEID = '4';
 
             Console.WriteLine("Hello, welcome to tile cost calculator: \nlet's start !");
             while (true)
             {
                 Console.WriteLine("Select the shape you want to calculate the total cost of: ");
 
-                Console.WriteLine("1: Rectangle \n2: Circle \n3: Polygon \n4: Triangle \n\n\n");
+                Console.WriteLine($"1: {RECTANGLE} \n2: {CIRCLE} \n3: {POLYGON} \n4: {TRIANGLE} \n\n\n");
                 char choice = Console.ReadKey().KeyChar;
                 
                 //clearing console for better readability
@@ -31,29 +41,30 @@ namespace TileCost_Calculator
                 Console.WriteLine("\nEnter estimatedWorking Time");
                 int estimatedWorkingHours = Convert.ToInt32(Console.ReadLine());
 
-                if (choice == '1')
+                if (choice == RECTANGLEID)
                 {
                     // A = w * l
                     Console.WriteLine("Enter the width: ");
                     float width = Convert.ToInt32(Console.ReadLine());
+
                     Console.WriteLine("Enter the height: ");
                     float height = Convert.ToInt32(Console.ReadLine()); ;
 
 
                     area = width * height;
-                    totalCostFlooring = area * costPerUnit;
-                    shape = "rectangle";
+
+                    selectedShape = RECTANGLE;
 
                 }
-                else if (choice == '2')
+                else if (choice == CIRCLEID)
                 {
                     //A = pi * R2
                     double radius = Convert.ToInt32(Console.ReadLine());
                     area = (float)(3.14 * Math.Pow(radius, 2.0)); //casting double to float
 
-                    shape = "Circle";
+                    selectedShape = CIRCLE;
                 }
-                else if (choice == '3')
+                else if (choice == POLYGONID)
                 {
                     //A = 1/2 * p * apothem
                     Console.WriteLine("Enter the perimeter: ");
@@ -63,9 +74,9 @@ namespace TileCost_Calculator
 
 
                     area = 1 / 2 * perimeter * apothem;
-                    shape = "Polygon";
+                    selectedShape = POLYGON;
                 }
-                else if (choice == '4')
+                else if (choice == TRIANGLEID)
                 {
                     //A = Hb * b / 2
                     Console.WriteLine("Enter the base: ");
@@ -76,7 +87,7 @@ namespace TileCost_Calculator
 
                     area = heightOfATriangle * baseOfATriangle / 2;
  
-                    shape = "Triangle";
+                    selectedShape = TRIANGLE;
                 }
                 else
                 {
@@ -88,7 +99,10 @@ namespace TileCost_Calculator
                 totalCostFlooring = area * costPerUnit;
                 float totalPerHour = totalCostFlooring / estimatedWorkingHours;
 
-                Console.WriteLine($"\nThe total cost for flooring an {shape} shaped area of {area} is {totalCostFlooring} \nfor an estimation of {totalPerHour} total per hour");
+                Console.WriteLine($"\nThe total cost for flooring an {selectedShape} shaped area of {area} is {totalCostFlooring} \n" +
+                                  $"for an estimation of {totalPerHour} total per hour");
+
+
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey(); //wait for user interaction to continue
                 Console.Clear();

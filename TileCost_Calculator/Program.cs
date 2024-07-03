@@ -17,10 +17,10 @@ namespace TileCost_Calculator
             const string POLYGON = "Polygon";
             const string TRIANGLE = "Triangle"; 
             
-            const char RECTANGLEID = '1';
-            const char CIRCLEID = '2';
-            const char POLYGONID = '3';
-            const char TRIANGLEID = '4';
+            const char RECTANGLE_ID = '1';
+            const char CIRCLE_ID = '2';
+            const char POLYGON_ID = '3';
+            const char TRIANGLE_ID = '4';
 
             Console.WriteLine("Hello, welcome to tile cost calculator: \nlet's start !");
             while (true)
@@ -41,7 +41,7 @@ namespace TileCost_Calculator
                 Console.WriteLine("\nEnter estimatedWorking Time");
                 int estimatedWorkingHours = Convert.ToInt32(Console.ReadLine());
 
-                if (choice == RECTANGLEID)
+                if (choice == RECTANGLE_ID)
                 {
                     // A = w * l
                     Console.WriteLine("Enter the width: ");
@@ -56,15 +56,15 @@ namespace TileCost_Calculator
                     selectedShape = RECTANGLE;
 
                 }
-                else if (choice == CIRCLEID)
+                else if (choice == CIRCLE_ID)
                 {
                     //A = pi * R2
-                    double radius = Convert.ToInt32(Console.ReadLine());
-                    area = (float)(3.14 * Math.Pow(radius, 2.0)); //casting double to float
+                    float radius = Convert.ToInt32(Console.ReadLine());
+                    area = (PI * (radius*radius)); //radius * radius same as Math.POW(radius, 2.0)
 
                     selectedShape = CIRCLE;
                 }
-                else if (choice == POLYGONID)
+                else if (choice == POLYGON_ID)
                 {
                     //A = 1/2 * p * apothem
                     Console.WriteLine("Enter the perimeter: ");
@@ -76,7 +76,7 @@ namespace TileCost_Calculator
                     area = 1 / 2 * perimeter * apothem;
                     selectedShape = POLYGON;
                 }
-                else if (choice == TRIANGLEID)
+                else if (choice == TRIANGLE_ID)
                 {
                     //A = Hb * b / 2
                     Console.WriteLine("Enter the base: ");
